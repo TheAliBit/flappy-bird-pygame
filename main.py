@@ -1,13 +1,12 @@
 import pygame as pg
 from game.game import Game
+from game.menu import Menu
 from game.settings import FPS, DISPLAY_MODE
-
-pg.init()
 
 
 def main():
     running = True
-    playing = True
+    playing = False
 
     pg.init()
     resolution, flag = DISPLAY_MODE
@@ -15,15 +14,22 @@ def main():
     clock = pg.time.Clock()
     fps = FPS
 
+    state = {
+        "running": True,
+        "playing": False
+    }
+
     # Implementing Menus
+    menu = Menu(screen, state)
 
     # Implementing Game
-    game = Game(screen, clock, fps)
+    game = Game(screen, state, clock, fps)
 
-    while running:
+    while state['running']:
         # Start Menu Here ...
+        menu.run()
 
-        while playing:
+        while state['playing']:
             # Game Logic Here ...
             game.run()
 

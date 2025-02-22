@@ -1,20 +1,22 @@
-import pygame as pg
 import sys
+
+import pygame as pg
+
 from assets.colors import *
 from .bird import Bird
 
 
 class Game:
-    def __init__(self, screen, clock, fps):
+    def __init__(self, screen, state, clock, fps):
         self.screen = screen
-        self.width, self.height = self.screen.get_size()
+        self.state = state
+        self.width, self.height = screen.get_size()
         self.clock = clock
         self.fps = fps
         self.bird = Bird(self.screen)
 
     def run(self):
-        self.playing = True
-        while self.playing:
+        while self.state['playing']:
             self.clock.tick(self.fps)
             self.event()
             self.update()
