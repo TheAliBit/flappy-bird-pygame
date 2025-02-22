@@ -2,17 +2,21 @@ import pygame as pg
 from game.game import Game
 from game.menu import Menu
 from game.settings import FPS, DISPLAY_MODE
+import os
 
 
 def main():
-    running = True
-    playing = False
-
     pg.init()
+    pg.mixer.init()
+
     resolution, flag = DISPLAY_MODE
     screen = pg.display.set_mode(resolution, flag)
     clock = pg.time.Clock()
     fps = FPS
+
+    music_path = os.path.join(os.path.dirname(__file__), 'assets/musics/The-Rolling-Stones-Paint-It-Black.mp3')
+    pg.mixer.music.load(music_path)
+    pg.mixer.music.play(-1, 0, 0)
 
     state = {
         "running": True,
@@ -32,6 +36,8 @@ def main():
         # Start Menu Here ...
         menu.run()
 
+
+    pg.mixer.stop()
 
 if __name__ == '__main__':
     main()
