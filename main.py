@@ -16,7 +16,6 @@ def main():
 
     music_path = os.path.join(os.path.dirname(__file__), 'assets/musics/The-Rolling-Stones-Paint-It-Black.mp3')
     pg.mixer.music.load(music_path)
-    pg.mixer.music.play(-1, 0, 0)
 
     state = {
         "running": True,
@@ -31,13 +30,14 @@ def main():
 
     while state['running']:
         if state['playing']:
+            pg.mixer.music.play(-1, 0, 0)
             # Game Logic Here ...
             game.run()
         # Start Menu Here ...
         menu.run()
 
-
     pg.mixer.stop()
+
 
 if __name__ == '__main__':
     main()
