@@ -1,5 +1,5 @@
 import sys
-
+import os
 import pygame as pg
 
 from assets.colors import white
@@ -10,7 +10,8 @@ class Menu:
         self.screen = screen
         self.state = state
         self.screen_width, self.screen_height = screen.get_size()
-        self.font = pg.font.Font(None, 32)
+        font_path = os.path.join(os.path.dirname(__file__), '../assets/fonts/AgaveNerdFontMono-Regular.ttf')
+        self.font = pg.font.Font(font_path, 42)
         self.running = True
         self.text = None
         self.text_rect = None

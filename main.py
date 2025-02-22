@@ -26,12 +26,11 @@ def main():
     game = Game(screen, state, clock, fps)
 
     while state['running']:
-        # Start Menu Here ...
-        menu.run()
-
-        while state['playing']:
+        if state['playing']:
             # Game Logic Here ...
             game.run()
+        # Start Menu Here ...
+        menu.run()
 
 
 if __name__ == '__main__':
