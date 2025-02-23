@@ -1,8 +1,18 @@
-class Boundary:
-    def __init__(self, screen, state):
-        self.top = (0, 0, screen.get_width(), 10)
-        self.state = state
+import pygame as pg
 
-    # def run(self):
-    #     if self.state["playing"]:
-    #         self.
+from assets.colors import white
+
+
+class Boundary:
+    def __init__(self, screen):
+        self.screen = screen
+        self.color = white
+        self.top = pg.Rect(0, 0, screen.get_width(), 10)
+        self.bottom = pg.Rect(0, screen.get_height() - 10, screen.get_width(), 10)
+
+    def run(self):
+        self.draw()
+
+    def draw(self):
+        pg.draw.rect(self.screen, self.color, self.top)
+        pg.draw.rect(self.screen, self.color, self.bottom)

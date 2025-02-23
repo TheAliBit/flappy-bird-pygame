@@ -4,6 +4,7 @@ import pygame as pg
 
 from assets.colors import *
 from .bird import Bird
+from .boundary import Boundary
 
 
 class Game:
@@ -14,6 +15,7 @@ class Game:
         self.clock = clock
         self.fps = fps
         self.bird = Bird(self.screen)
+        self.boundary = Boundary(self.screen)
 
     def run(self):
         while self.state['playing']:
@@ -42,4 +44,5 @@ class Game:
     def draw(self):
         self.screen.fill(black)
         self.bird.draw()
+        self.boundary.draw()
         pg.display.flip()
